@@ -2,32 +2,35 @@ import random
 
 def numberGuessingGame():
     print("Sayı tahmin etme oyununa hoş geldiniz!")
-    print("Zorluk seviyesini seçin: ")
-    print("1. Kolay (1-50)")
-    print("2. Orta (1-100)")
-    print("3. Zor (1-200)")
+    print("Zorluk seviyesini seçin \n"
+          "1. Kolay (1-50)\n"
+          "2. Orta (1-100)\n"
+          "3. Zor (1-200)")
 
     while True:
         choice = input("Seçiminizi giriniz (1-3): ")
 
+        attempts = 0
         if choice == '1':
             number = random.randint(1, 50)
             maxAttempts = 7
+            break
         elif choice == '2':
             number = random.randint(1, 100)
-            maxAttemps = 5
+            maxAttempts = 5
+            break
         elif choice == '3':
             number = random.randint(1, 200)
             maxAttempts = 3
             break
         else:
             print("Geçersiz seçim. Lütfen 1-3 aralığında bir seçim yapınız!")
-    attempts = 0
 
-    print(f"1 ile {number} arasında bir sayı tuttum bakalım onu bulabilecek misin?"
-          f"Dikkatli ol {maxAttemps} deneme hakkın var.")
 
-    while attempts < maxAttemps:
+    print(f"1 ile {number} arasında bir sayı tuttum bakalım onu bulabilecek misin?\n"
+          f"Dikkatli ol {maxAttempts} deneme hakkın var.")
+
+    while attempts < maxAttempts:
         guess = int(input("Tahmininizi giriniz: "))
         attempts += 1
 
