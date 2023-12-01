@@ -15,7 +15,7 @@ def numberGuessingGame():
         if choice == '1':
             maxNum = 50
             number = random.randint(minNum, maxNum)
-            maxAttempts = 7
+            maxAttempts = 5
             break
         elif choice == '2':
             maxNum = 100
@@ -29,7 +29,9 @@ def numberGuessingGame():
             break
         else:
             print("Geçersiz seçim. Lütfen 1-3 aralığında bir seçim yapınız!")
-
+    
+    # Başlangıç puanı
+    playerScore = 100
 
     print(f"{minNum} ile {maxNum} arasında bir sayı tuttum bakalım onu bulabilecek misin?\n"
           f"Dikkatli ol {maxAttempts} deneme hakkın var.")
@@ -41,14 +43,22 @@ def numberGuessingGame():
         if guess < number:
             if attempts!=maxAttempts:
                 print("Tuttuğum sayı daha büyük! Tekrar dene")
+            playerScore -= 20
+
         elif guess > number:
             if attempts!=maxAttempts:
                 print("Tuttuğum sayı daha küçük! Tekrar dene")
+            playerScore -= 20
+
         else:
             print(f"Tebrikler! {number} sayısını {attempts} denemede buldun :)")
             break
 
+
     else:
         print(f"Maalesef! {maxAttempts} denemenin tamamını kullandın. Tuttuğum sayı {number}.")
+
+    
+    print(f"Oyun bitti. Toplam puanınız: {playerScore}")
 
 numberGuessingGame()
