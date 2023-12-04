@@ -60,5 +60,18 @@ def numberGuessingGame():
 
     
     print(f"Oyun bitti. Toplam puanınız: {playerScore}")
+    return PlayAgain()
+
+
+def PlayAgain():
+    while True:
+        decision = input("Tekrar denemek ister misiniz? (Evet/Hayır): ").capitalize()
+        if decision == "Evet":
+            return numberGuessingGame()
+        elif decision == "Hayır":
+            print("Oyun bitti. İyi günler!")
+            break
+        else:
+            print("Lütfen geçerli bir değer giriniz (Evet/Hayır): ")
 
 numberGuessingGame()
