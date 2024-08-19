@@ -1,4 +1,4 @@
-# NumberGuessingGame
+# number-guessing-game
 
 Bilgisayarın rastgele bir sayı seçtiği ve
 oyuncunun sınırlı sayıda denemeyle bu sayıyı tahmin etmeye çalıştığı bir sayı tahmin oyunudur.
