@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         randomNumber = Int.random(in: 1...100)
         remainingAttempts = 5
         guessTextField.text = ""
+        guessTextField.isEnabled = true
         resultLabel.isHidden = true
         attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
     }
@@ -56,6 +57,7 @@ class ViewController: UIViewController {
                 self.resultLabel.backgroundColor = UIColor(hex: "#81C784")
             }
             guessTextField.text = ""
+            guessTextField.isEnabled = false
         } else if guess > randomNumber {
             remainingAttempts -= 1 // Tahmin hakkı bir azaltıldı
             attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
@@ -77,6 +79,7 @@ class ViewController: UIViewController {
         if remainingAttempts == 0 {
             // Tahmin hakkı bittiğinde uyarı ver
             showGameOverAlert()
+            guessTextField.isEnabled = false
         }
     }
     
@@ -92,4 +95,3 @@ class ViewController: UIViewController {
         startNewGame()
     }
 }
-
