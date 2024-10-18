@@ -66,6 +66,7 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.resultLabel.backgroundColor = .red
             }
+            shakeTextField()
         } else {
             remainingAttempts -= 1 // Tahmin hakkı bir azaltıldı
             attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
@@ -74,12 +75,14 @@ class ViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.resultLabel.backgroundColor = UIColor(hex: "#1E90FF")
             }
+            shakeTextField() // Sallanma animasyonu eklendi
         }
         
         if remainingAttempts == 0 {
             // Tahmin hakkı bittiğinde uyarı ver
             showGameOverAlert()
             guessTextField.isEnabled = false
+            
         }
     }
     
@@ -93,5 +96,15 @@ class ViewController: UIViewController {
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         startNewGame()
+    }
+    
+    func shakeTextField() {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.05
+        animation.repeatCount = 5
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: guessTextField.center.x - 11, y: guessTextField.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: guessTextField.center.x + 11, y: guessTextField.center.y))
+        guessTextField.layer.add(animation, forKey: "position")
     }
 }
