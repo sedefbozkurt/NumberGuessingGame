@@ -15,12 +15,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="350" horizontalCompressionResistancePriority="400" text="Tebrikler, doğru tahmin!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d59-2U-cUg">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="350" horizontalCompressionResistancePriority="400" text="Tebrikler, doğru tahmin!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d59-2U-cUg">
                                 <rect key="frame" x="76" y="497" width="250" height="31"/>
                                 <color key="backgroundColor" red="0.50588235294117645" green="0.7803921568627451" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="2Ao-jR-3XQ"/>
-                                    <constraint firstAttribute="height" constant="31" id="TsQ-L5-wNe"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="TsQ-L5-wNe"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -41,7 +41,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.81176470588235294" green="0.84705882352941175" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="7"/>
@@ -67,6 +67,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="guessButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0q6-8V-CAs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwc-aJ-EsI">
                                 <rect key="frame" x="126" y="716" width="150" height="53"/>
@@ -113,10 +116,14 @@
                             <constraint firstItem="gwc-aJ-EsI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xYP-nk-hQ7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="guessTextField" destination="MeD-WL-DQw" id="Mkb-BE-kbp"/>
+                        <outlet property="resultLabel" destination="d59-2U-cUg" id="MQ0-WI-DoH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-178" y="-98"/>
+            <point key="canvasLocation" x="-372" y="-132"/>
         </scene>
     </scenes>
 </document>
