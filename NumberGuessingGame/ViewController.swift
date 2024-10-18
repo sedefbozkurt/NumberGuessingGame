@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var guessTextField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var attemptsLabel: UILabel!
+    @IBOutlet weak var guessButton: UIButton!
     
     var randomNumber: Int = 0
     var remainingAttempts = 5 // Kalan tahmin hakkı
@@ -31,6 +32,7 @@ class ViewController: UIViewController {
         remainingAttempts = 5
         guessTextField.text = ""
         guessTextField.isEnabled = true
+        guessButton.isEnabled = true
         resultLabel.isHidden = true
         attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
     }
@@ -58,6 +60,8 @@ class ViewController: UIViewController {
             }
             guessTextField.text = ""
             guessTextField.isEnabled = false
+            guessButton.isEnabled = false
+            
         } else if guess > randomNumber {
             remainingAttempts -= 1 // Tahmin hakkı bir azaltıldı
             attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
@@ -82,6 +86,7 @@ class ViewController: UIViewController {
             // Tahmin hakkı bittiğinde uyarı ver
             showGameOverAlert()
             guessTextField.isEnabled = false
+            guessButton.isEnabled = false
             
         }
     }
