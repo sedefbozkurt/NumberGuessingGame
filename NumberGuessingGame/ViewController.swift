@@ -7,25 +7,31 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController {
 
     @IBOutlet weak var guessTextField: UITextField!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var attemptsLabel: UILabel!
     
-    var randomNumber = Int.random(in: 1...100)
-    
+    var randomNumber: Int = 0
     var remainingAttempts = 5 // Kalan tahmin hakkı
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Başlangıç tahmin etme hakkı
-        attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
-        guessTextField.delegate = self
+        startNewGame()
         
         // Ekrana dokununca klavye gizlenir
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)
+    }
+    
+    func startNewGame() {
+        randomNumber = Int.random(in: 1...100)
+        remainingAttempts = 5
+        guessTextField.text = ""
+        resultLabel.isHidden = true
+        attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
     }
     
     @objc func hideKeyboard() {
@@ -75,14 +81,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showGameOverAlert() {
-        let alert = UIAlertController(title: "Oyun Bitti", message: "Tahmin hakların bitti!", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Tekrar Oyna", style: .default) { _ in
-            //self.resetGame()
-        }
+        let alert = UIAlertController(title: "Oyun Bitti", message: "Tahmin hakların bitti! Tuttuğum sayı: \(randomNumber)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+        
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-        
     }
     
+    @IBAction func resetButtonTapped(_ sender: UIButton) {
+        startNewGame()
+    }
 }
 
