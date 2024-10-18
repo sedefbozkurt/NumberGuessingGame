@@ -53,6 +53,10 @@ class ViewController: UIViewController {
     func checkGuess(_ guess: Int) {
         let generator = UINotificationFeedbackGenerator()
         
+        // Kalan tahmin hakkını bir azalt
+        remainingAttempts -= 1
+        updateAttemptsLabel() // Arka plan rengi güncellendi
+        
         if guess == randomNumber {
             resultLabel.text = "Tebrikler, doğru tahmin!"
             generator.notificationOccurred(.success) // Başarı titreşimi
@@ -64,9 +68,6 @@ class ViewController: UIViewController {
             guessButton.isEnabled = false
             
         } else if guess > randomNumber {
-            remainingAttempts -= 1 // Tahmin hakkı bir azaltıldı
-            updateAttemptsLabel() // Arka plan rengi güncellendi
-            //attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
             resultLabel.text = "Tuttuğum sayı daha küçük! Daha küçük bir tahminde bulun"
             generator.notificationOccurred(.warning) // Uyarı titreşimi
             UIView.animate(withDuration: 0.5) {
@@ -74,9 +75,6 @@ class ViewController: UIViewController {
             }
             shakeTextField()
         } else {
-            remainingAttempts -= 1 // Tahmin hakkı bir azaltıldı
-            updateAttemptsLabel() // Arka plan rengi güncellendi
-            //attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
             resultLabel.text = "Tuttuğum sayı daha büyük! Daha büyük bir tahminde bulun"
             generator.notificationOccurred(.warning) // Uyarı titreşimi
             UIView.animate(withDuration: 0.5) {
@@ -85,12 +83,11 @@ class ViewController: UIViewController {
             shakeTextField() // Sallanma animasyonu eklendi
         }
         
+        // Kalan tahmin hakkı sıfır olduğunda oyunu bitir
         if remainingAttempts == 0 {
-            // Tahmin hakkı bittiğinde uyarı ver
             showGameOverAlert()
             guessTextField.isEnabled = false
             guessButton.isEnabled = false
-            
         }
     }
     
