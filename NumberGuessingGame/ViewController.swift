@@ -66,6 +66,7 @@ class ViewController: UIViewController {
             guessTextField.text = ""
             guessTextField.isEnabled = false
             guessButton.isEnabled = false
+            return // Doğru tahmin yapıldığında fonksiyondan çık
             
         } else if guess > randomNumber {
             resultLabel.text = "Tuttuğum sayı daha küçük! Daha küçük bir tahminde bulun"
