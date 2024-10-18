@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -105,7 +106,7 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kalan Tahmin Hakkı: 5" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBz-Ae-vQN">
                                 <rect key="frame" x="58" y="169" width="259" height="31"/>
-                                <color key="backgroundColor" red="0.89411764705882346" green="0.69411764705882351" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="P7g-YJ-QPg"/>
                                     <constraint firstAttribute="width" constant="259" id="RdQ-bY-0uh"/>
@@ -140,6 +141,7 @@
                     </view>
                     <connections>
                         <outlet property="attemptsLabel" destination="sBz-Ae-vQN" id="jno-Ji-MH3"/>
+                        <outlet property="guessButton" destination="lKw-et-8m7" id="K0l-HX-anT"/>
                         <outlet property="guessTextField" destination="MeD-WL-DQw" id="Mkb-BE-kbp"/>
                         <outlet property="resultLabel" destination="d59-2U-cUg" id="MQ0-WI-DoH"/>
                     </connections>
@@ -149,4 +151,9 @@
             <point key="canvasLocation" x="-126" y="-304"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

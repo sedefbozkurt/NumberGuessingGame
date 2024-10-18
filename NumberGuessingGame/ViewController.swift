@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         guessButton.isEnabled = true
         resultLabel.isHidden = true
         attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
+        attemptsLabel.backgroundColor = .green
     }
     
     @objc func hideKeyboard() {
@@ -64,7 +65,8 @@ class ViewController: UIViewController {
             
         } else if guess > randomNumber {
             remainingAttempts -= 1 // Tahmin hakkı bir azaltıldı
-            attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
+            updateAttemptsLabel() // Arka plan rengi güncellendi
+            //attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
             resultLabel.text = "Tuttuğum sayı daha küçük! Daha küçük bir tahminde bulun"
             generator.notificationOccurred(.warning) // Uyarı titreşimi
             UIView.animate(withDuration: 0.5) {
@@ -73,7 +75,8 @@ class ViewController: UIViewController {
             shakeTextField()
         } else {
             remainingAttempts -= 1 // Tahmin hakkı bir azaltıldı
-            attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
+            updateAttemptsLabel() // Arka plan rengi güncellendi
+            //attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
             resultLabel.text = "Tuttuğum sayı daha büyük! Daha büyük bir tahminde bulun"
             generator.notificationOccurred(.warning) // Uyarı titreşimi
             UIView.animate(withDuration: 0.5) {
@@ -111,5 +114,24 @@ class ViewController: UIViewController {
         animation.fromValue = NSValue(cgPoint: CGPoint(x: guessTextField.center.x - 11, y: guessTextField.center.y))
         animation.toValue = NSValue(cgPoint: CGPoint(x: guessTextField.center.x + 11, y: guessTextField.center.y))
         guessTextField.layer.add(animation, forKey: "position")
+    }
+    
+    func updateAttemptsLabel() {
+        attemptsLabel.text = "Kalan Tahmin Hakkı: \(remainingAttempts)"
+        
+        switch remainingAttempts {
+        case 5:
+            attemptsLabel.backgroundColor = .green
+        case 4:
+            attemptsLabel.backgroundColor = UIColor(hex: "FABC3F")
+        case 3:
+            attemptsLabel.backgroundColor = UIColor(hex: "E85C0D")
+        case 2:
+            attemptsLabel.backgroundColor = UIColor(hex: "C7253E")
+        case 1:
+            attemptsLabel.backgroundColor = UIColor(hex: "821131")
+        default:
+            attemptsLabel.backgroundColor = .lightGray
+        }
     }
 }
