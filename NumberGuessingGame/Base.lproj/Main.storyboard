@@ -136,13 +136,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="attemptsLabel" destination="sBz-Ae-vQN" id="jno-Ji-MH3"/>
                         <outlet property="guessTextField" destination="MeD-WL-DQw" id="Mkb-BE-kbp"/>
                         <outlet property="resultLabel" destination="d59-2U-cUg" id="MQ0-WI-DoH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-350" y="-307"/>
+            <point key="canvasLocation" x="-126" y="-304"/>
         </scene>
     </scenes>
 </document>
